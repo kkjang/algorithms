@@ -11,7 +11,7 @@ sorted_list = sorted(test_list)
 class BinarySearchCase(unittest.TestCase):
     def test_binary_search(self):
         foo = [1,32,56,84,97,105,325,725]
-        self.assertEqual(binary_search(foo, 1), True)
+        self.assertEqual(binary_search(foo, 32), True)
         
 class MergeSortCase(unittest.TestCase):
 	def test_merge_sort(self):

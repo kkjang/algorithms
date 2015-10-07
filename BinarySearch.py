@@ -11,19 +11,35 @@ def binary_search_recursive(arr, val):
                 status = binary_search(arr[:mid], val)
     return status
 
+# def binary_search(arr, val):
+#     low = 0
+#     high = len(arr) - 1
+#     mid = (high + low) / 2
+#     found = False
+#     while low <= high and not found:
+#         if arr[mid] == val:
+#             found = True
+#         else:
+#             if arr[mid] < val:
+#                 low = mid + 1
+#             else:
+#                 high = mid - 1
+#             mid = (high + low) / 2
+#     return found
+
 def binary_search(arr, val):
-    low = 0
-    high = len(arr) - 1
-    mid = (high + low) / 2
     found = False
-    while low <= high and not found:
-        if arr[mid] == val:
-            found = True
+    i = 0
+    j = len(arr)
+    while i <= j:
+        mid = (i + j) / 2
+        if val == arr[mid]:
+            return 'found'
+        elif val < arr[mid]:
+            j = mid
         else:
-            if arr[mid] < val:
-                low = mid + 1
-            else:
-                high = mid - 1
-            mid = (high + low) / 2
-    return found
+            i = mid + 1
+    return 'not found'
+        
+        
         
