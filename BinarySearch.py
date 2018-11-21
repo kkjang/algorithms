@@ -41,5 +41,21 @@ def binary_search(arr, val):
             i = mid + 1
     return 'not found'
         
-        
-        
+    
+def binary_search_in_place(arr, val, begin=None, end=None):
+    if begin == None:
+        begin = 0
+    if end == None:
+        end = len(arr) - 1
+    found_index = -1
+    if end - begin > -1:
+        mid = begin + int((end - begin) / 2)
+        if val == arr[mid]:
+          found_index = mid
+        elif val < arr[mid]:
+          found_index = binary_search_in_place(arr, val, begin, mid-1)
+        else:
+          found_index = binary_search_in_place(arr, val, mid+1, end)
+    if found_index > -1:
+        return found_index
+    return -1
