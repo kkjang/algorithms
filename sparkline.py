@@ -8,18 +8,16 @@ ticks = [u'▁', u'▂', u'▃', u'▄', u'▅', u'▆', u'▇', u'█']
 
 
 def sparkline(input_str):
-    foo = map(int, input_str.split())
-    maximum = max(foo)
-    minimum = min(foo)
-    bar = (maximum - minimum) / 8.0
-    graph = [None] * len(foo)
-    for i in range(len(foo)):
-        tick_index = math.ceil((foo[i] - minimum) / bar)
-        if tick_index < 1:
-            graph[i] = ticks[int(tick_index)]
-        else:
-            graph[i] = ticks[int(tick_index) - 1]
-    return ''.join(graph)
+    vals = [x for x in map(int, input_str.split())]
+    max_val = max(vals)
+    min_val = min(vals)
+    val_range = max_val - min_val
+    for i, val in enumerate(vals):
+      tick_index = math.floor((val-min_val) * (len(ticks) / val_range))
+      if tick_index == len(ticks):
+        tick_index -= 1
+      vals[i] = ticks[tick_index]
+    return "".join(vals)
     
 
 print sparkline("28 25 26 23 20 19")
