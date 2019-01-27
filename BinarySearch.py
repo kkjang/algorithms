@@ -59,3 +59,49 @@ def binary_search_in_place(arr, val, begin=None, end=None):
     if found_index > -1:
         return found_index
     return -1
+
+
+
+
+def binary_search_ceil(arr, val):
+  if not arr:
+    return None
+  low = 0
+  high = len(arr) - 1
+  while low <= high:
+    mid = int((high + low) / 2)
+    print(low, mid, high)
+    if arr[mid] == val:
+      return arr[mid]
+    elif arr[mid] < val:
+      low = mid + 1
+    else:
+      high = mid - 1
+  if low == len(arr):
+    low -= 1
+  return arr[low]
+
+
+def binary_search_floor(arr, val):
+  if not arr:
+    return None
+  low = 0
+  high = len(arr) - 1
+  while low <= high:
+    mid = int((high + low) / 2)
+    print("before", low, mid, high)
+    if arr[mid] == val:
+      return arr[mid]
+    elif arr[mid] < val:
+      low = mid + 1
+    else:
+      high = mid - 1
+  print(low, mid, high)
+  if high == -1:
+    high = 0
+  return arr[high]
+
+
+foo = binary_search_floor([2,4,6], 7)
+
+print(foo)
